@@ -1,2 +1,2 @@
-# classhub-template-backend
-Classhub Backend Template
+# DDD Clean Architecture in Go
+// TODO
