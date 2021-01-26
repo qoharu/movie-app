@@ -1,4 +1,4 @@
-package domain
+package movie
 
 import (
 	"context"
@@ -14,8 +14,8 @@ type Movie struct {
 	UpdatedAt time.Time `json:"updated_at"`
 }
 
-// MovieUseCase ...
-type MovieUseCase interface {
+// UseCase ...
+type UseCase interface {
 	FindByID(context context.Context, id int) (Movie, error)
 	FindByTitle(context context.Context, title string) ([]Movie, error)
 	Add(context context.Context, movie Movie) (Movie, error)

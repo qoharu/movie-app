@@ -2,7 +2,7 @@ package main
 
 import (
 	"github.com/qoharu/go-clean-ddd/config"
-	controller "github.com/qoharu/go-clean-ddd/movie/controller/http"
+	controller2 "github.com/qoharu/go-clean-ddd/movie/controller"
 	"github.com/qoharu/go-clean-ddd/movie/repository"
 	"github.com/qoharu/go-clean-ddd/movie/usecase"
 
@@ -13,15 +13,15 @@ import (
 
 var r *gin.Engine
 
-// Initialize Service
 func init() {
 	r = gin.Default()
 	db := config.GetDBConnection()
 
-	movieRepo := repository.NewMovieRepository(db)
+	// Initialize Movie Service
+	movieRepo := repository.NewMovieSQLRepository(db)
 	movieUseCase := usecase.NewMovieUseCase(movieRepo)
-	movieAPI := r.Group("/v1")
-	controller.NewMovieController(movieAPI, movieUseCase)
+	movieAPI := r.Group("/v1/movies")
+	controller2.InitiateMovieHTTPController(movieAPI, movieUseCase)
 }
 
 func main() {

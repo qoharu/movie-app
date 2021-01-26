@@ -1,0 +1,29 @@
+version: "3.8"
+services:
+  movie-app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: movie-app
+    environment:
+      - CLASSHUB_ENV=development
+    ports:
+      - 8080:8080
+    depends_on:
+      movie-postgres:
+        condition: service_healthy
+
+  movie-postgres:
+    image: postgres
+    container_name: movie-postgres
+    ports:
+      - 5432:5432
+    environment:
+      - POSTGRES_USER=movie
+      - POSTGRES_DB=movie
+      - POSTGRES_PASSWORD=rahasia123
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -U postgres" ]
+      interval: 10s
+      timeout: 5s
+      retries: 5

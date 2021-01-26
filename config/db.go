@@ -2,10 +2,9 @@ package config
 
 import (
 	"fmt"
+	"github.com/qoharu/go-clean-ddd/movie"
 
 	"github.com/jinzhu/gorm"
-
-	"github.com/qoharu/go-clean-ddd/domain"
 )
 
 // DBCon ... Database Connection Instance
@@ -15,11 +14,11 @@ var dbCon *gorm.DB
 func InitDB() {
 	var err error
 
-	var dbHost string = "localhost"
-	var dbPort string = "5433"
-	var dbUser string = "postgres"
-	var dbPass string = "rahasia123"
-	var dbName string = "movie"
+	var dbHost = "movie-postgres"
+	var dbPort = "5432"
+	var dbUser = "movie"
+	var dbPass = "rahasia123"
+	var dbName = "movie"
 
 	dbString := fmt.Sprintf("host=%s port=%s user=%s dbname=%s password=%s sslmode=disable", dbHost, dbPort, dbUser, dbName, dbPass)
 
@@ -27,7 +26,7 @@ func InitDB() {
 	dbCon, err = gorm.Open("postgres", dbString)
 
 	//migrate database
-	dbCon.AutoMigrate(&domain.Movie{})
+	dbCon.AutoMigrate(&movie.Movie{})
 
 	if err != nil {
 		panic(err)
