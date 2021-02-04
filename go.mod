@@ -1,4 +1,4 @@
-module github.com/qoharu/go-clean-ddd
+module github.com/qoharu/movie-app
 
 go 1.14
 
