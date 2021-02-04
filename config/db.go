@@ -2,7 +2,7 @@ package config
 
 import (
 	"fmt"
-	"github.com/qoharu/go-clean-ddd/internal/movie"
+	"github.com/qoharu/movie-app/internal/movie"
 
 	"github.com/jinzhu/gorm"
 )

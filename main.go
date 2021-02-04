@@ -3,9 +3,9 @@ package main
 import (
 	"github.com/gin-gonic/gin"
 	_ "github.com/jinzhu/gorm/dialects/postgres"
-	"github.com/qoharu/go-clean-ddd/config"
-	"github.com/qoharu/go-clean-ddd/init"
-	"github.com/qoharu/go-clean-ddd/internal/movie"
+	"github.com/qoharu/movie-app/config"
+	"github.com/qoharu/movie-app/internal/movie"
+	"github.com/qoharu/movie-app/server"
 )
 
 var r *gin.Engine
@@ -20,7 +20,7 @@ func init() {
 	movieController := movie.NewHTTPController(movieUseCase)
 
 	// Start API
-	init.Router(r, movieController)
+	server.StartRouter(r, movieController)
 }
 
 func main() {

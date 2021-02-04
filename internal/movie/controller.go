@@ -2,7 +2,7 @@ package movie
 
 import (
 	"github.com/gin-gonic/gin"
-	"github.com/qoharu/go-clean-ddd/internal/pkg/common/http/response"
+	"github.com/qoharu/movie-app/internal/pkg/common/http/response"
 	"net/http"
 	"strconv"
 )
